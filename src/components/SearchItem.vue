@@ -58,8 +58,8 @@ export default defineComponent({
 	.searchitem {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
-		margin-bottom: 32px;
+		gap: var( --statista-spacer );
+		margin-bottom: var( --statista-spacer-xl );
 	}
 	h3 {
 		text-transform: uppercase;

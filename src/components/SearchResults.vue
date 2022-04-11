@@ -1,13 +1,14 @@
 <template>
 	<section class="searchApp__results">
 		<div class="panelCard padding-all-20">
-			<div v-if="!results.length">
+			<div v-if="!results.length && !loading">
 				No Results
 			</div>
-			<div v-else>
+			<div v-if="results.length">
 				Number of Results: {{ results.length }}
-				<hr> 
+				<hr>
 			</div>
+			<SearchLoader v-if="loading" />
 			<div v-for="result in results" :key="result.identifier">
 				<SearchItem :result="result" />
 			</div>
@@ -19,13 +20,16 @@
 
 import { defineComponent, watch } from 'vue'
 import SearchItem from './SearchItem';
+import SearchLoader from './SearchLoader';
 
 export default defineComponent({
 	components: {
 		SearchItem,
+		SearchLoader,
 	},
 	props: [
-		'results'
+		'results',
+		'loading',
 	],
 
 })

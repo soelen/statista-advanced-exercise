@@ -1,12 +1,20 @@
 <template>
-        <div class="pos-relative searchApp__container">
-		<form @submit="onSubmit">
-			<input v-model="searchTerm" placeholder="Search for statistics" type="text" name="query" />
-			<button class="button button--primary searchApp__submitButton">
-				Search
-			</button>
-		</form>
-        </div>
+  <div class="pos-relative searchApp__container">
+    <form @submit="onSubmit">
+      <input
+        v-model="searchTerm"
+        placeholder="Search for statistics"
+        type="text"
+        name="query"
+        :disabled="loading"
+      />
+      <button
+        :disabled="loading"
+        class="button button--primary searchApp__submitButton">
+        Search
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -31,6 +39,9 @@ export default defineComponent({
 			onSubmit,
 		}
 	},
+	props: [
+		'loading',
+	]
 })
 </script>
 
